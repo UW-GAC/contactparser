@@ -33,7 +33,8 @@
 
 # Read the table from an exported csv file.
 .read_csv_table <- function(filename) {
-  tab <- readr::read_csv(filename) %>%
+  # read_csv throws warnings when reading this file because the name of one column is missing.
+  tab <- suppressMessages(suppressWarnings(readr::read_csv(filename))) %>%
     tibble::as_tibble()
 
   names(tab)[2] <- "Institution Type"
