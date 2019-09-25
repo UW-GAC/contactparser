@@ -16,7 +16,8 @@ Imports:
   tidyr,
   xml2
 Suggests:
-  roxygen2
+    roxygen2,
+    testthat
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
