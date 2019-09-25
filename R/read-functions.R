@@ -1,7 +1,6 @@
 # Rename table and replace blank strings with NA.
 .clean_table <- function(df) {
 
-  names(df)[[2]] <- "institution_type"
   names(df) <- names(df) %>%
     stringr::str_replace_all(" ", "_") %>%
     stringr::str_replace_all("-", "_") %>%
@@ -26,6 +25,7 @@
   html <- xml2::read_html(x)
   html_tab <- xml2::xml_find_all(html, "//body//table")[[1]]
   tab <- rvest::html_table(html_tab)
+  names(tab)[2] <- "Institution Type"
 
   .clean_table(tab) %>%
     tibble::as_tibble()
@@ -35,6 +35,8 @@
 .read_csv_table <- function(filename) {
   tab <- readr::read_csv(filename) %>%
     tibble::as_tibble()
+
+  names(tab)[2] <- "Institution Type"
 
   .clean_table(tab)
 }
