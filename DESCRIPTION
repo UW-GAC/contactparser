@@ -7,6 +7,17 @@ Authors@R:
            role = c("aut", "cre"),
            email = "amstilp@uw.edu")
 Description: Parse the TOPMed contact table, in csv format or from the html code.
+Imports: 
+  dplyr,
+  readr,
+  rvest,
+  stringr,
+  tibble,
+  tidyr,
+  xml2
+Suggests:
+  roxygen2
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.1.1
