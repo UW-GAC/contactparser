@@ -1,0 +1,12 @@
+Package: contactparser
+Title: Parse the TOPMed contact table
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Adrienne",
+           family = "Stilp",
+           role = c("aut", "cre"),
+           email = "amstilp@uw.edu")
+Description: Parse the TOPMed contact table, in csv format or from the html code.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
