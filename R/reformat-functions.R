@@ -20,7 +20,8 @@
   long_tab <- tmp %>%
     tidyr::separate("email_list", email_cols, sep = ";", , fill = "right") %>%
     tidyr::gather("foo", "email", email_cols, na.rm = TRUE) %>%
-    dplyr::select(-foo)
+    dplyr::select(-foo) %>%
+    dplyr::mutate_all(stringr::str_trim)
 
   long_tab
 }
