@@ -4,3 +4,4 @@
 ^\.Rproj\.user$
 ^NEWS\.md$
 ^README\.Rmd$
+^\.travis\.yml$
