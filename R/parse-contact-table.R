@@ -20,6 +20,17 @@
 #'
 #' @export
 #'
+#' @examples{
+#'
+#' html_file <- system.file(package = "contactparser", "testdata", "example.html")
+#' parse_contact_table(html_file)
+#'
+#' csv_file <- system.file(package = "contactparser", "testdata", "example.csv")
+#' parse_contact_table(html_file)
+#'
+#' }
+#'
+#'
 parse_contact_table <- function(x) {
 
   if (stringr::str_ends(x, "\\.html")) {

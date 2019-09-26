@@ -27,3 +27,16 @@ with different studies or projects, that email will appear multiple times.
 Read the table from either a csv or html file and reformat it to a tall format, with
 one row per email.
 }
+\examples{
+{
+
+html_file <- system.file(package = "contactparser", "testdata", "example.html")
+parse_contact_table(html_file)
+
+csv_file <- system.file(package = "contactparser", "testdata", "example.csv")
+parse_contact_table(html_file)
+
+}
+
+
+}
