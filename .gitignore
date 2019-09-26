@@ -45,3 +45,5 @@ vignettes/*.pdf
 
 packrat/lib*/
 packrat/src/
+
+README\.html

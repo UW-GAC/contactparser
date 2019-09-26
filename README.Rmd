@@ -1,0 +1,52 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# contactparser
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The contactparser package was designed to parse and reformat the [Contacts table](https://www.nhlbiwgs.org/contact-filter) on the TOPMed website.
+
+
+## Installation
+
+You can install the released version of contactparser from [github](https://github.com/UW-GAC/contactparser) with:
+
+``` r
+# install.packages("devtools") 
+devtools::install_github("UW-GAC/contactparser")
+```
+
+## Example
+
+This package has one primary function to read, parse, and reformat the contacts table.
+It starts with either a csv file or an html file, parses it, and reshapes the table so that it can easily be filtered by TOPMed study, project, or contact type (PI, Co-PI, Contact, etc.).
+
+First, export the table to a csv file with the "export" button.
+Then call:
+```{r csv-example}
+library(contactparser)
+csv_file <- system.file(package = "contactparser", "testdata", "example.csv")
+parse_contact_table(csv_file)
+```
+
+You can also save the webpage as an html file and parse the contact table from the html:
+```{r html-example}
+library(contactparser)
+html_file <- system.file(package = "contactparser", "testdata", "example.html")
+parse_contact_table(html_file)
+```
+

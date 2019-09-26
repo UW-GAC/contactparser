@@ -46,6 +46,11 @@ Source: CRAN
 Version: 1.1.4
 Hash: e88df919a68845e664e019570e2251b6
 
+Package: base64enc
+Source: CRAN
+Version: 0.1-3
+Hash: c590d29e555926af053055e23ee79efb
+
 Package: brew
 Source: CRAN
 Version: 1.0-6
@@ -188,6 +193,11 @@ Source: CRAN
 Version: 0.3.0
 Hash: a9e7b0666eb933a0cb36779240b4462e
 
+Package: highr
+Source: CRAN
+Version: 0.8
+Hash: 16aa2cc98d7b68c9d148c263c8dcdbcd
+
 Package: hms
 Source: CRAN
 Version: 0.5.1
@@ -228,6 +238,12 @@ Source: CRAN
 Version: 1.6
 Hash: 5f969e213e966135393e3e304abf3f49
 
+Package: knitr
+Source: CRAN
+Version: 1.25
+Hash: c0b5316240a79d38f4785884b95a9609
+Requires: evaluate, highr, markdown, stringr, xfun, yaml
+
 Package: labeling
 Source: CRAN
 Version: 0.3
@@ -254,6 +270,12 @@ Package: magrittr
 Source: CRAN
 Version: 1.5
 Hash: bdc4d48c3135e8f3b399536ddf160df4
+
+Package: markdown
+Source: CRAN
+Version: 1.1
+Hash: 1b6a18fd395589425e338a47b999099f
+Requires: mime, xfun
 
 Package: memoise
 Source: CRAN
@@ -386,6 +408,13 @@ Source: CRAN
 Version: 0.4.0
 Hash: eabda67321fe1d477ea641ddd5d84f00
 
+Package: rmarkdown
+Source: CRAN
+Version: 1.15
+Hash: 70ecbccb919ee0d1ce9c21b6072c1bc1
+Requires: base64enc, evaluate, htmltools, jsonlite, knitr, mime,
+    stringr, tinytex, xfun, yaml
+
 Package: roxygen2
 Source: CRAN
 Version: 6.1.1
@@ -488,6 +517,12 @@ Version: 0.2.5
 Hash: 9ab4ed03f4b7bbdbd1db9d7a920aae1a
 Requires: Rcpp, glue, purrr, rlang
 
+Package: tinytex
+Source: CRAN
+Version: 0.16
+Hash: 569143c7e98bfbd9727b462b57276b09
+Requires: xfun
+
 Package: usethis
 Source: CRAN
 Version: 1.5.1
@@ -520,6 +555,11 @@ Package: withr
 Source: CRAN
 Version: 2.1.2
 Hash: d534108bcd5f34ec73e9eb523751ba20
+
+Package: xfun
+Source: CRAN
+Version: 0.9
+Hash: 66003709a6aa47339b94a2aef066bddb
 
 Package: xml2
 Source: CRAN

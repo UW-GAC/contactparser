@@ -19,6 +19,7 @@ Imports:
 Suggests:
     charlatan,
     roxygen2,
+    rmarkdown,
     testthat
 License: MIT + file LICENSE
 Encoding: UTF-8
