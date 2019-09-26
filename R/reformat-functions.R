@@ -1,6 +1,6 @@
 .reformat_contact_table <- function(df) {
 
-  expected_names <- c("institution_type", "study_short_name", "project",
+  expected_names <- c("record_type", "study_short_name", "project",
                       "pi", "co_pi", "contact", "phenotype_liaison", "dataset_contact")
   if (!setequal(names(df), expected_names)) {
     msg <- sprintf("df names required to be %s", paste(expected_names, collapse = ", "))
@@ -8,8 +8,8 @@
   }
 
   # Check for duplicates
-  if (any(duplicated(df[, c("institution_type", "study_short_name", "project")]))) {
-    stop("duplicated institution_type/study_short_name/project detected!")
+  if (any(duplicated(df[, c("record_type", "study_short_name", "project")]))) {
+    stop("duplicated record_type/study_short_name/project detected!")
 
   }
   tmp <- df %>%
@@ -33,7 +33,7 @@
     dplyr::arrange(.data$study_short_name, .data$project, .data$contact_type) %>%
     dplyr::mutate_all(stringr::str_trim) %>%
     # Put in expected order.
-    dplyr::select(.data$institution_type, .data$study_short_name, .data$project,
+    dplyr::select(.data$record_type, .data$study_short_name, .data$project,
                   .data$contact_type, .data$email)
 
   long_tab

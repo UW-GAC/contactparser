@@ -25,7 +25,7 @@ test_that("produces same output for csv and html", {
 test_that("cleaning an example table fixes names appropriately", {
   filename <- system.file(package = "contactparser", "testdata", "example.html")
   tab <- .read_html_table(filename)
-  expected_names <- c("institution_type", "study_short_name", "project",
+  expected_names <- c("record_type", "study_short_name", "project",
                       "pi", "co_pi", "contact","phenotype_liaison","dataset_contact")
   expect_equal(names(tab), expected_names)
 

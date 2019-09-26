@@ -25,7 +25,7 @@
   html <- xml2::read_html(x)
   html_tab <- xml2::xml_find_all(html, "//body//table")[[1]]
   tab <- rvest::html_table(html_tab)
-  names(tab)[2] <- "Institution Type"
+  names(tab)[2] <- "Record Type"
 
   .clean_table(tab) %>%
     tibble::as_tibble()
@@ -37,7 +37,7 @@
   tab <- suppressMessages(suppressWarnings(readr::read_csv(filename))) %>%
     tibble::as_tibble()
 
-  names(tab)[2] <- "Institution Type"
+  names(tab)[2] <- "Record Type"
 
   .clean_table(tab)
 }

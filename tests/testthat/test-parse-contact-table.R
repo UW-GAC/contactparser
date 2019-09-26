@@ -4,8 +4,8 @@ test_that("works with html", {
   parsed <- parse_contact_table(system.file(package = "contactparser", "testdata", "example.html"))
   expect_is(parsed, "tbl_df")
   expect_equal(nrow(parsed), 7)
-  expect_equal(names(parsed), c("institution_type", "study_short_name", "project", "contact_type", "email"))
-  expect_equal(parsed$institution_type, c(rep("Parent Study", 5), rep("TOPMed Project", 2)))
+  expect_equal(names(parsed), c("record_type", "study_short_name", "project", "contact_type", "email"))
+  expect_equal(parsed$record_type, c(rep("Parent Study", 5), rep("TOPMed Project", 2)))
   expect_equal(parsed$study_short_name, c(rep("Study1", 5), rep("Study2", 2)))
   expect_equal(parsed$project, c(rep("Project1", 5), rep("Project2", 2)))
   expect_equal(parsed$contact_type,

@@ -2,7 +2,7 @@ context("reformat functions")
 
 test_that("reformats a table to expected rows", {
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = internet_faker$email(),
@@ -14,10 +14,10 @@ test_that("reformats a table to expected rows", {
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 5)
-  expect_equal(long$institution_type, rep("Parent study", 5))
+  expect_equal(long$record_type, rep("Parent study", 5))
   expect_equal(long$study_short_name, rep("ABC", 5))
   expect_equal(long$project, rep("DEF", 5))
   expect_equal(long$contact_type, c("pi", "co_pi", "contact", "phenotype_liaison", "dataset_contact"))
@@ -28,7 +28,7 @@ test_that("reformats a table to expected rows", {
 test_that("reformats a table with two rows to expected format", {
   n <- 2
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC", "DEF"),
     project = c("GHI", "JKL"),
     pi = sapply(1:n, function(x) internet_faker$email()),
@@ -40,10 +40,10 @@ test_that("reformats a table with two rows to expected format", {
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 10)
-  expect_equal(long$institution_type, rep("Parent study", 10))
+  expect_equal(long$record_type, rep("Parent study", 10))
   expect_equal(long$study_short_name, rep(wide$study_short_name, each = 5))
   expect_equal(long$project, rep(wide$project, each = 5))
   expect_equal(long$contact_type,
@@ -55,10 +55,10 @@ test_that("reformats a table with two rows to expected format", {
   expect_equal(long$email, expected_emails)
 })
 
-test_that("reformatting fails with duplicated institution_type/study/project combination", {
+test_that("reformatting fails with duplicated record_type/study/project combination", {
   n <- 2
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC", "ABC"),
     project = c("DEF", "DEF"),
     pi = sapply(1:n, function(x) internet_faker$email()),
@@ -67,13 +67,13 @@ test_that("reformatting fails with duplicated institution_type/study/project com
     phenotype_liaison = sapply(1:n, function(x) internet_faker$email()),
     dataset_contact = sapply(1:n, function(x) internet_faker$email())
   )
-  expect_error(.reformat_contact_table(wide), "duplicated institution_type/study_short_name/project detected")
+  expect_error(.reformat_contact_table(wide), "duplicated record_type/study_short_name/project detected")
 })
 
 test_that("reformatting works with duplicated study/project combination but different insitution type", {
   n <- 2
   wide <- tibble::tibble(
-    institution_type = c("TOPMed project", "Parent study"),
+    record_type = c("TOPMed project", "Parent study"),
     study_short_name = c("ABC", "ABC"),
     project = c("DEF", "DEF"),
     pi = sapply(1:n, function(x) internet_faker$email()),
@@ -89,7 +89,7 @@ test_that("reformatting works with duplicated study/project combination but diff
 test_that("works with duplicated parent study with different projects", {
   n <- 2
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC", "ABC"),
     project = c("DEF", "GHI"),
     pi = sapply(1:n, function(x) internet_faker$email()),
@@ -100,10 +100,10 @@ test_that("works with duplicated parent study with different projects", {
   )
 
   long <- .reformat_contact_table(wide)
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 10)
-  expect_equal(long$institution_type, rep("Parent study", 10))
+  expect_equal(long$record_type, rep("Parent study", 10))
   expect_equal(long$study_short_name, rep(wide$study_short_name, each = 5))
   expect_equal(long$project, rep(wide$project, each = 5))
   expect_equal(long$contact_type,
@@ -118,7 +118,7 @@ test_that("works with duplicated parent study with different projects", {
 test_that("works with duplicated project with different parent studies", {
   n <- 2
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC", "DEF"),
     project = c("GHI", "GHI"),
     pi = sapply(1:n, function(x) internet_faker$email()),
@@ -129,10 +129,10 @@ test_that("works with duplicated project with different parent studies", {
   )
 
   long <- .reformat_contact_table(wide)
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 10)
-  expect_equal(long$institution_type, rep("Parent study", 10))
+  expect_equal(long$record_type, rep("Parent study", 10))
   expect_equal(long$study_short_name, rep(wide$study_short_name, each = 5))
   expect_equal(long$project, rep(wide$project, each = 5))
   expect_equal(long$contact_type,
@@ -146,11 +146,11 @@ test_that("works with duplicated project with different parent studies", {
 
 
 test_that("reformatting fails with missing names", {
-  required_names <- c("institution_type", "study_short_name", "project",
+  required_names <- c("record_type", "study_short_name", "project",
                       "pi", "co_pi", "contact", "phenotype_liaison", "dataset_contact")
 
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = internet_faker$email(),
@@ -168,11 +168,11 @@ test_that("reformatting fails with missing names", {
 })
 
 test_that("reformatting fails with extra names", {
-  required_names <- c("institution_type", "study_short_name", "project",
+  required_names <- c("record_type", "study_short_name", "project",
                       "pi", "co_pi", "contact", "phenotype_liaison", "dataset_contact")
 
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = internet_faker$email(),
@@ -196,12 +196,12 @@ test_that("works with names in a different order", {
     pi = internet_faker$email(),
     project = c("DEF"),
     study_short_name = c("ABC"),
-    institution_type = c("Parent study")
+    record_type = c("Parent study")
   )
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 5)
   expect_equal(long$contact_type, c("pi", "co_pi", "contact", "phenotype_liaison", "dataset_contact"))
@@ -217,7 +217,7 @@ test_that("reformatting works with two email addresses per field", {
   dataset_contact_emails <- c(internet_faker$email(), internet_faker$email())
 
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = paste(pi_emails, collapse = "; "),
@@ -229,7 +229,7 @@ test_that("reformatting works with two email addresses per field", {
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 10)
 
@@ -245,7 +245,7 @@ test_that("reformatting works with two email addresses in one field and one in a
   pi_emails <- c(internet_faker$email(), internet_faker$email())
 
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = paste(pi_emails, collapse = "; "),
@@ -257,7 +257,7 @@ test_that("reformatting works with two email addresses in one field and one in a
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 6)
 
@@ -269,7 +269,7 @@ test_that("reformatting works with two email addresses in one field and one in a
 
 test_that("reformatting removes contact types with no email", {
   wide <- tibble::tibble(
-    institution_type = c("Parent study"),
+    record_type = c("Parent study"),
     study_short_name = c("ABC"),
     project = c("DEF"),
     pi = internet_faker$email(),
@@ -281,7 +281,7 @@ test_that("reformatting removes contact types with no email", {
 
   long <- .reformat_contact_table(wide)
   expect_is(long, "tbl_df")
-  expected_names <- c("institution_type", "study_short_name", "project", "contact_type", "email")
+  expected_names <- c("record_type", "study_short_name", "project", "contact_type", "email")
   expect_equal(names(long), expected_names)
   expect_equal(nrow(long), 2)
 
