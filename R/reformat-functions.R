@@ -8,8 +8,8 @@
   }
 
   # Check for duplicates
-  if (any(duplicated(df[, c("study_short_name", "project")]))) {
-    stop("duplicated study_short_name/project detected!")
+  if (any(duplicated(df[, c("institution_type", "study_short_name", "project")]))) {
+    stop("duplicated institution_type/study_short_name/project detected!")
 
   }
   tmp <- df %>%

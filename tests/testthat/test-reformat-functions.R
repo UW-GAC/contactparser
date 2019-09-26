@@ -55,7 +55,7 @@ test_that("reformats a table with two rows to expected format", {
   expect_equal(long$email, expected_emails)
 })
 
-test_that("reformatting fails with duplicated study/project combination", {
+test_that("reformatting fails with duplicated institution_type/study/project combination", {
   n <- 2
   wide <- tibble::tibble(
     institution_type = c("Parent study"),
@@ -67,7 +67,23 @@ test_that("reformatting fails with duplicated study/project combination", {
     phenotype_liaison = sapply(1:n, function(x) internet_faker$email()),
     dataset_contact = sapply(1:n, function(x) internet_faker$email())
   )
-  expect_error(.reformat_contact_table(wide), "duplicated study_short_name/project detected")
+  expect_error(.reformat_contact_table(wide), "duplicated institution_type/study_short_name/project detected")
+})
+
+test_that("reformatting works with duplicated study/project combination but different insitution type", {
+  n <- 2
+  wide <- tibble::tibble(
+    institution_type = c("TOPMed project", "Parent study"),
+    study_short_name = c("ABC", "ABC"),
+    project = c("DEF", "DEF"),
+    pi = sapply(1:n, function(x) internet_faker$email()),
+    co_pi = sapply(1:n, function(x) internet_faker$email()),
+    contact = sapply(1:n, function(x) internet_faker$email()),
+    phenotype_liaison = sapply(1:n, function(x) internet_faker$email()),
+    dataset_contact = sapply(1:n, function(x) internet_faker$email())
+  )
+  long <- .reformat_contact_table(wide)
+  expect_equal(nrow(long), 10)
 })
 
 test_that("works with duplicated parent study with different projects", {
@@ -127,6 +143,7 @@ test_that("works with duplicated project with different parent studies", {
   )
   expect_equal(long$email, expected_emails)
 })
+
 
 test_that("reformatting fails with missing names", {
   required_names <- c("institution_type", "study_short_name", "project",
