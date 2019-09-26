@@ -10,6 +10,7 @@ Description: Parse the TOPMed contact table, in csv format or from the html code
 Imports: 
   dplyr,
   readr,
+  rlang,
   rvest,
   stringr,
   tibble,
