@@ -16,6 +16,7 @@ Imports:
   tidyr,
   xml2
 Suggests:
+    charlatan,
     roxygen2,
     testthat
 License: MIT + file LICENSE

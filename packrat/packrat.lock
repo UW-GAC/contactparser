@@ -57,6 +57,12 @@ Version: 3.3.2
 Hash: 7661e5194cbbe511957b2fb621516c1b
 Requires: R6, processx
 
+Package: charlatan
+Source: CRAN
+Version: 0.3.0
+Hash: 79b0a74b9aa80f44220c2608cadbd1e6
+Requires: R6, tibble, whisker
+
 Package: cli
 Source: CRAN
 Version: 1.1.0
