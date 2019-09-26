@@ -16,7 +16,7 @@
     tidyr::gather(
       "contact_type",
       "email_list",
-      pi, co_pi, contact, phenotype_liaison, dataset_contact,
+      .data$pi, .data$co_pi, .data$contact, .data$phenotype_liaison, .data$dataset_contact,
       na.rm = TRUE,
       factor_key = TRUE
     )
@@ -29,11 +29,12 @@
   long_tab <- tmp %>%
     tidyr::separate("email_list", email_cols, sep = ";", , fill = "right") %>%
     tidyr::gather("foo", "email", email_cols, na.rm = TRUE) %>%
-    dplyr::select(-foo) %>%
-    dplyr::arrange(study_short_name, project, contact_type) %>%
+    dplyr::select(-.data$foo) %>%
+    dplyr::arrange(.data$study_short_name, .data$project, .data$contact_type) %>%
     dplyr::mutate_all(stringr::str_trim) %>%
     # Put in expected order.
-    dplyr::select(institution_type, study_short_name, project, contact_type, email)
+    dplyr::select(.data$institution_type, .data$study_short_name, .data$project,
+                  .data$contact_type, .data$email)
 
   long_tab
 }
