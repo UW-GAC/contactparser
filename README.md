@@ -5,9 +5,14 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)
+| Branch                     | Build status                                                                                                                                       |
+| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **master**                 | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)                 |
+| **feature/improve-readme** | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=feature/improve-readme)](https://travis-ci.org/UW-GAC/contactparser) |
+
 <!-- badges: end -->
+
+## Description
 
 The contactparser package was designed to parse and reformat the
 [Contacts table](https://www.nhlbiwgs.org/contact-filter) on the TOPMed
