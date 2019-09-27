@@ -4,6 +4,8 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+# contactparser
+
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -13,11 +15,32 @@ knitr::opts_chunk$set(
 )
 ```
 
-# contactparser
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)
+```{r current-branch-badge, results = "asis", echo = FALSE, warning = FALSE}
+.get_badge_string <- function(branch) {
+  travis_url <- "https://travis-ci.org/UW-GAC/contactparser"
+  paste0(
+    sprintf("[![Travis build status](%s.svg?branch=%s)]", travis_url, branch),
+    sprintf("(%s)", travis_url)
+  )
+}
+
+current_branch <- system("git rev-parse --abbrev-ref HEAD", intern = TRUE)
+df <- data.frame(
+  branch = union("master", current_branch)
+)
+
+df$badges <- sapply(df$branch, .get_badge_string)
+df$branch <- sprintf("**%s**", df$branch)
+names(df) <- c("Branch", "Build status")
+df %>% 
+  knitr::kable(format = "markdown")
+```
+
 <!-- badges: end -->
+
+## Description
 
 The contactparser package was designed to parse and reformat the [Contacts table](https://www.nhlbiwgs.org/contact-filter) on the TOPMed website.
 
@@ -41,13 +64,30 @@ Then call:
 ```{r csv-example}
 library(contactparser)
 csv_file <- system.file(package = "contactparser", "testdata", "example.csv")
-parse_contact_table(csv_file)
+parsed <- parse_contact_table(csv_file)
+parsed
 ```
 
 You can also save the webpage as an html file and parse the contact table from the html:
 ```{r html-example}
 library(contactparser)
 html_file <- system.file(package = "contactparser", "testdata", "example.html")
-parse_contact_table(html_file)
+parsed <- parse_contact_table(html_file)
+parsed
 ```
 
+Once you've parsed the file, you can easily filter to specific types of contacts using `dplyr` functions:
+```{r filter-example}
+library(dplyr, quietly = TRUE)
+
+# Just PIs:
+pis <- parsed %>%
+  filter(contact_type %in% c("pi", "co_pi"))
+pis
+```
+
+Then you can create a string of emails that you can cut and paste into your email client:
+```{r email-example}
+unique_pi_emails <- unique(pis$email)
+cat(paste(unique_pi_emails, collapse = ", "))
+```

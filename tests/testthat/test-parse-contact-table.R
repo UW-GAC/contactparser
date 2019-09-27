@@ -11,7 +11,7 @@ test_that("works with html", {
   expect_equal(parsed$contact_type,
                c("pi", "co_pi", "contact", "contact", "dataset_contact","pi", "contact"))
   expected_emails <- c(
-    "nia.vonrueden@yahoo.com", "nia.vonrueden@yahoo.com", "koelpin.kathaleen@gmail.com",
+    "nia.vonrueden@yahoo.com", "fnitzsche@gmail.com", "koelpin.kathaleen@gmail.com",
     "ilona.cartwright@yahoo.com", "sdenesik@hotmail.com", "karren.schmeler@group.biz",
     "karren.schmeler@group.biz"
   )
