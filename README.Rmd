@@ -4,8 +4,6 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# contactparser
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -15,32 +13,11 @@ knitr::opts_chunk$set(
 )
 ```
 
+# contactparser
 
 <!-- badges: start -->
-```{r current-branch-badge, results = "asis", echo = FALSE, warning = FALSE}
-.get_badge_string <- function(branch) {
-  travis_url <- "https://travis-ci.org/UW-GAC/contactparser"
-  paste0(
-    sprintf("[![Travis build status](%s.svg?branch=%s)]", travis_url, branch),
-    sprintf("(%s)", travis_url)
-  )
-}
-
-current_branch <- system("git rev-parse --abbrev-ref HEAD", intern = TRUE)
-df <- data.frame(
-  branch = union("master", current_branch)
-)
-
-df$badges <- sapply(df$branch, .get_badge_string)
-df$branch <- sprintf("**%s**", df$branch)
-names(df) <- c("Branch", "Build status")
-df %>% 
-  knitr::kable(format = "markdown")
-```
-
+[![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)
 <!-- badges: end -->
-
-## Description
 
 The contactparser package was designed to parse and reformat the [Contacts table](https://www.nhlbiwgs.org/contact-filter) on the TOPMed website.
 
