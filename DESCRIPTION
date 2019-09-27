@@ -20,7 +20,8 @@ Suggests:
     charlatan,
     roxygen2,
     rmarkdown,
-    testthat
+    testthat,
+    covr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
