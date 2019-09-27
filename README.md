@@ -5,10 +5,10 @@
 
 <!-- badges: start -->
 
-| Branch                     | Build status                                                                                                                                       |
-| :------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **master**                 | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)                 |
-| **feature/improve-readme** | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=feature/improve-readme)](https://travis-ci.org/UW-GAC/contactparser) |
+| Branch     | Build status                                                                                                                       |
+| :--------- | :--------------------------------------------------------------------------------------------------------------------------------- |
+| **master** | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser) |
+| **devel**  | [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=devel)](https://travis-ci.org/UW-GAC/contactparser)  |
 
 <!-- badges: end -->
 
