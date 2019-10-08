@@ -7,6 +7,11 @@
   paste(unique(emails), collapse = ", ")
 }
 
+.check_email_column <- function(tbl) {
+  if (!("email" %in% names(tbl))) {
+    stop("tbl must have a column 'email'")
+  }
+}
 #' Obtain emails in the table
 #' 
 #' @param tbl A tibble with one required column "email"
@@ -24,8 +29,12 @@
 #' 
 #' }
 get_emails <- function(tbl, sorted = TRUE) {
-  if (!("email" %in% names(tbl))) {
-    stop("tbl must have a column 'email'")
-  }
+  .check_email_column(tbl)
   return(.construct_email_list(tbl$email, sorted = sorted))
+}
+
+print_emails <- function(tbl, sorted = TRUE) {
+  .check_email_column(tbl)
+  message(.construct_email_list(tbl$email, sorted = sorted))
+  return(invisible(NULL))
 }
