@@ -64,8 +64,16 @@ pis <- parsed %>%
 pis
 ```
 
-Then you can create a string of emails that you can cut and paste into your email client:
-```{r email-example}
-unique_pi_emails <- unique(pis$email)
-cat(paste(unique_pi_emails, collapse = ", "))
+There are two functions you can use to create a string of emails that you can cut and paste into your email client.
+In both cases, the list is sorted by default, and emails for duplicate records only appear once.
+
+You can use `get_emails` to returns a string that you can use to email PIs:
+```{r get-email-example}
+email_string <- get_emails(pis)
+email_string
+```
+
+Alternately, you can use `print_emails` to print the same string:
+```{r print-email-example}
+print_emails(pis)
 ```

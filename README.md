@@ -90,11 +90,22 @@ pis
 #> 3 TOPMed Project Study2           Projec… pi           karren.schmeler@gro…
 ```
 
-Then you can create a string of emails that you can cut and paste into
-your email client:
+There are two functions you can use to create a string of emails that
+you can cut and paste into your email client. In both cases, the list is
+sorted by default, and emails for duplicate records only appear once.
+
+You can use `get_emails` to returns a string that you can use to email
+PIs:
 
 ``` r
-unique_pi_emails <- unique(pis$email)
-cat(paste(unique_pi_emails, collapse = ", "))
-#> nia.vonrueden@yahoo.com, fnitzsche@gmail.com, karren.schmeler@group.biz
+email_string <- get_emails(pis)
+email_string
+#> [1] "fnitzsche@gmail.com, karren.schmeler@group.biz, nia.vonrueden@yahoo.com"
+```
+
+Alternately, you can use `print_emails` to print the same string:
+
+``` r
+print_emails(pis)
+#> fnitzsche@gmail.com, karren.schmeler@group.biz, nia.vonrueden@yahoo.com
 ```
