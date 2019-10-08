@@ -14,6 +14,8 @@
 #' 
 #' @seealso parse_contact_table
 #' 
+#' @export
+#' 
 #' @examples{
 #' 
 #' html_file <- system.file(package = "contactparser", "testdata", "example.html")
