@@ -2,5 +2,6 @@
 
 export(get_emails)
 export(parse_contact_table)
+export(print_emails)
 importFrom(rlang,.data)
 importFrom(tidyr,"%>%")
