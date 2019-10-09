@@ -103,7 +103,8 @@ email_string
 #> [1] "fnitzsche@gmail.com, karren.schmeler@group.biz, nia.vonrueden@yahoo.com"
 ```
 
-Alternately, you can use `print_emails` to print the same string:
+Alternately, you can use `print_emails` to print the same string as a
+message:
 
 ``` r
 print_emails(pis)

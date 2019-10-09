@@ -73,7 +73,7 @@ email_string <- get_emails(pis)
 email_string
 ```
 
-Alternately, you can use `print_emails` to print the same string:
+Alternately, you can use `print_emails` to print the same string as a message:
 ```{r print-email-example}
 print_emails(pis)
 ```
