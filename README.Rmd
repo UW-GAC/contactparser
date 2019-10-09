@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.org/UW-GAC/contactparser.svg?branch=master)](https://travis-ci.org/UW-GAC/contactparser)
+[![Codecov test coverage](https://codecov.io/gh/UW-GAC/contactparser/branch/master/graph/badge.svg)](https://codecov.io/gh/UW-GAC/contactparser?branch=master)
 <!-- badges: end -->
 
 The contactparser package was designed to parse and reformat the [Contacts table](https://www.nhlbiwgs.org/contact-filter) on the TOPMed website.
@@ -41,13 +42,38 @@ Then call:
 ```{r csv-example}
 library(contactparser)
 csv_file <- system.file(package = "contactparser", "testdata", "example.csv")
-parse_contact_table(csv_file)
+parsed <- parse_contact_table(csv_file)
+parsed
 ```
 
 You can also save the webpage as an html file and parse the contact table from the html:
 ```{r html-example}
 library(contactparser)
 html_file <- system.file(package = "contactparser", "testdata", "example.html")
-parse_contact_table(html_file)
+parsed <- parse_contact_table(html_file)
+parsed
 ```
 
+Once you've parsed the file, you can easily filter to specific types of contacts using `dplyr` functions:
+```{r filter-example}
+library(dplyr, quietly = TRUE)
+
+# Just PIs:
+pis <- parsed %>%
+  filter(contact_type %in% c("pi", "co_pi"))
+pis
+```
+
+There are two functions you can use to create a string of emails that you can cut and paste into your email client.
+In both cases, the list is sorted by default, and emails for duplicate records only appear once.
+
+You can use `get_emails` to returns a string that you can use to email PIs:
+```{r get-email-example}
+email_string <- get_emails(pis)
+email_string
+```
+
+Alternately, you can use `print_emails` to print the same string as a message:
+```{r print-email-example}
+print_emails(pis)
+```

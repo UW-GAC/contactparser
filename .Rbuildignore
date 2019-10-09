@@ -4,4 +4,6 @@
 ^\.Rproj\.user$
 ^NEWS\.md$
 ^README\.Rmd$
+^README\.html$
 ^\.travis\.yml$
+^codecov\.yml$

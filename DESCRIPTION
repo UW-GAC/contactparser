@@ -1,6 +1,6 @@
 Package: contactparser
 Title: Parse the TOPMed contact table
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: 
     person(given = "Adrienne",
            family = "Stilp",
@@ -20,7 +20,8 @@ Suggests:
     charlatan,
     roxygen2,
     rmarkdown,
-    testthat
+    testthat,
+    covr
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
