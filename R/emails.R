@@ -22,6 +22,7 @@
 #'
 #' @param tbl A tibble with one required column "email"
 #' @param sorted Should the emails be sorted before returning?
+#' @param delimiter Character(s) to use as a delimiter to when concatenating emails
 #'
 #' @seealso parse_contact_table
 #'
@@ -34,6 +35,7 @@
 #' get_emails(parsed)
 #'
 #' print_emails(parsed)
+#' print_emails(parsed, delimiter = "\n")
 #'
 NULL
 
