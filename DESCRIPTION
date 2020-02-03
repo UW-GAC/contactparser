@@ -1,6 +1,6 @@
 Package: contactparser
 Title: Parse the TOPMed contact table
-Version: 0.2.0.9001
+Version: 0.3.0
 Authors@R: 
     person(given = "Adrienne",
            family = "Stilp",
