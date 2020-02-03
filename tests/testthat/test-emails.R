@@ -32,6 +32,12 @@ test_that("get_emails sort argument", {
   expect_equal(get_emails(dat, sorted = FALSE), "b@bb.com, a@aa.com")
 })
 
+
+test_that("get_emails delimiter argument", {
+  dat <- tibble::tibble(email = c("b@bb.com", "a@aa.com"))
+  expect_equal(get_emails(dat, delimiter = "\t"), "a@aa.com\tb@bb.com")
+})
+
 test_that("get_emails works with many emails", {
   n <- 10
   emails <- sapply(1:n, function(x) internet_faker$email())
@@ -86,6 +92,11 @@ test_that("print_emails sort argument", {
   dat <- tibble::tibble(email = c("b@bb.com", "a@aa.com"))
   expect_message(print_emails(dat), "^a@aa\\.com, b@bb\\.com$", perl = TRUE)
   expect_message(print_emails(dat, sorted = FALSE), "^b@bb\\.com, a@aa\\.com$", perl = TRUE)
+})
+
+test_that("print_emails delimiter argument", {
+  dat <- tibble::tibble(email = c("b@bb.com", "a@aa.com"))
+  expect_message(print_emails(dat, delimiter = "\t"), "^a@aa\\.com\tb@bb\\.com$", perl = TRUE)
 })
 
 test_that("print_emails works with many emails", {

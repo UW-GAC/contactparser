@@ -6,14 +6,16 @@
 \alias{print_emails}
 \title{Obtain emails in the table}
 \usage{
-get_emails(tbl, sorted = TRUE)
+get_emails(tbl, sorted = TRUE, delimiter = ", ")
 
-print_emails(tbl, sorted = TRUE)
+print_emails(tbl, sorted = TRUE, delimiter = ", ")
 }
 \arguments{
 \item{tbl}{A tibble with one required column "email"}
 
 \item{sorted}{Should the emails be sorted before returning?}
+
+\item{delimiter}{Character(s) to use as a delimiter to when concatenating emails}
 }
 \description{
 These functions collapse the emails in the provided \code{tbl} to
@@ -34,6 +36,7 @@ parsed <- parse_contact_table(html_file)
 get_emails(parsed)
 
 print_emails(parsed)
+print_emails(parsed, delimiter = "\\n")
 
 }
 \seealso{
