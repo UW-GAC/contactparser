@@ -1,4 +1,4 @@
-# contactparser (development version)
+# contactparser 0.3.0
 * Add a delimiter argument for `get_emails` and `print_emails`
 
 # contactparser 0.2.0
