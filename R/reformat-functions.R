@@ -9,7 +9,7 @@
 
   # Remove awards.
   df <- df %>%
-    dplyr::filter(record_type != "Award")
+    dplyr::filter(.data$record_type != "Award")
 
   # Check for duplicates
   if (any(duplicated(df[, c("record_type", "study_short_name", "project")]))) {
