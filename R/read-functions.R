@@ -9,7 +9,7 @@
     stringr::str_to_lower()
   df <- df %>%
     dplyr::rename(
-      study_short_name = .data$this_studys_short_name,
+      study_short_name = .data$studys_short_name,
       dataset_contact = .data$data_set_contact
     ) %>%
     # Replace empty strings with NA.
