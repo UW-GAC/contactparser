@@ -36,7 +36,7 @@ parsed <- parse_contact_table(html_file)
 get_emails(parsed)
 
 print_emails(parsed)
-print_emails(parsed, delimiter = "\\n")
+print_emails(parsed, delimiter = "\n")
 
 }
 \seealso{
